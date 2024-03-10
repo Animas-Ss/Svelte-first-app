@@ -1,9 +1,17 @@
 <script>
   import Logo from "../Logo/Logo.svelte";
-import Search from "../Search/Search.svelte";
+  import Search from "../Search/Search.svelte";
+  //TODO: serian como variables globales que puedo acceder desde cualqueir aprte de mi app
+  import { mode } from "../../storage/storage";
+  import { counter } from "../../storage/storage";
 
     export let icon = '';
     export let count ;
+  //TODO: asi se modifican usando metodos que ya propios de svelte
+    function handleMode(){
+        mode.update(mode => !mode)
+        counter.update(counter => counter + 1)
+    }
 </script>
 
 <nav>
@@ -11,11 +19,12 @@ import Search from "../Search/Search.svelte";
     <div>
         <p>Tareas en total {count}</p>
     </div>
-    <Search/>
-    <ul>
-        <li>notas</li>
-        <li>mas</li>
-    </ul>
+    <Search on:input/>
+    <div>
+        <!-- TODO: poniendo el signo $ juntoa  la variable puedo reprecentar el cambio -->
+        {$mode} - {$counter}
+        <button on:click={handleMode}> Modo</button>
+    </div>
 </nav>
 
 <style>
@@ -27,10 +36,5 @@ import Search from "../Search/Search.svelte";
         width: 100%;
         height: 40px;
         padding: 30px;
-    }
-    ul{
-        display: flex;
-        gap: 50px;
-        list-style: none;
     }
 </style>

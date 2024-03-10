@@ -3,7 +3,7 @@
 
 <div>
     <div class="input-search">
-        <input type="search" placeholder="Buscar">
+        <input type="search" placeholder="Buscar" on:input>
         <i class="search-icon fa fa-search"></i>
     </div>
 </div>
