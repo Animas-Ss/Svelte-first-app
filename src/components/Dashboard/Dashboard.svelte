@@ -13,11 +13,6 @@ import Note from "../Note/Note.svelte";
 </section>
 
 <style>
-    :global(*){
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
     section{
         height: 100%;
         width: 100%;

@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte'
+  import { mode } from '../../storage/storage';
     export let title;
     export let id;
     export let color;
@@ -11,12 +12,12 @@
     //TODO: creamos una funcion para actualizar
 
     function handleChange(){
-        /*  dispach('update', {
+         dispach('update', {
             id: id,
             title:title,
             color:color,
             description:description
-         }); */
+         });
     }
 
     function handleColor(){
@@ -32,8 +33,8 @@
     }
 </script>
 
-<div class="card" style={`background: ${color}`}>
-    <div class="header">
+<div class={ $mode ? 'card-darkmode' : 'card'} style={ $mode ? 'background: #232531' : `background: ${color}`}>
+    <div class="header" style={ $mode ? `background: ${color}` : ''}>
         <div class="options">
             <button on:click={handleRemove}>Eliminar</button>
             <button on:click={handleColor}>color</button>
@@ -59,11 +60,23 @@
         align-items: center;
         border-radius: 5px;
         border: 2px solid transparent;
-        background: transparent;
+        background: #ffffff;
+    }
+
+    .card-darkmode{
+        background: #232531;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        height: 400px;
+        overflow: hidden;
     }
     .card:focus-within{
         border: 2px solid #000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .card-darkmode:focus-within{
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
     }
     .header{
         display: flex;
@@ -78,7 +91,7 @@
         gap: 20px;
         padding: 0 20px;
     }
-    textarea{
+    .content textarea{
         outline: none;
         border: none;
         resize: none;
@@ -86,7 +99,7 @@
         height: 250px;
         background: transparent;
     }
-    input{
+    .title input{
         outline: none;
         border: none;
         background: transparent;

@@ -7,12 +7,15 @@
 </div>
 
 <style>
+    .newnote{
+        background: transparent;
+    }
     button{
         cursor: pointer;
         border-radius: 10px;
         color: #bbb;
         border: 5px dotted #ccc;
-        background: trasparent;
+        background: transparent;
         font-weight: bold;
         width: 100%;
         height: 400px;
